@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: root_password
+       MYSQL_DATABASE: tasklist
+       MYSQL_USER: demo_user
+       MYSQL_PASSWORD: demo_password
+    tasklist-ws:
+      depends_on:
+       - db
+      image: task-ws:latest
+      ports:
+       - "8080:8080"
+      restart: always

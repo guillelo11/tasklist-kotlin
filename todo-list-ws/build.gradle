@@ -11,6 +11,7 @@ buildscript {
 		classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
 		classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")
+		classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
 	}
 }
 
@@ -19,6 +20,7 @@ apply plugin: 'kotlin-spring'
 apply plugin: 'kotlin-jpa'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.palantir.docker'
 
 group = 'com.guille'
 version = '0.0.1-SNAPSHOT'
@@ -52,4 +54,16 @@ compileTestKotlin {
 		freeCompilerArgs = ['-Xjsr305=strict']
 		jvmTarget = '1.8'
 	}
+}
+
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
+}
+
+docker {
+    name "task-ws"
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    buildArgs(['DEPENDENCY': "dependency"])
 }
