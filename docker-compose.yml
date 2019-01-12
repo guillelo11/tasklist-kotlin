@@ -9,10 +9,10 @@ services:
        MYSQL_DATABASE: tasklist
        MYSQL_USER: demo_user
        MYSQL_PASSWORD: demo_password
-    tasklist-ws:
-      depends_on:
-       - db
-      image: task-ws:latest
-      ports:
-       - "8080:8080"
-      restart: always
+   tasklist-ws:
+     depends_on:
+      - db
+     image: task-ws:latest
+     ports:
+      - "8080:8080"
+     restart: always
