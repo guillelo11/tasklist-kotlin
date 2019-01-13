@@ -19,7 +19,7 @@ services:
    angular-front:
      depends_on:
       - tasklist-ws
-     image: task-angular-front:latest
+     image: todo-angular-front:latest
      ports:
       - "80:80"
      restart: always
