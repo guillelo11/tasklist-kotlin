@@ -2,6 +2,13 @@
 
 This pretends to be a basic and small proyect made just to learn and test a variety of stuff including Spring Boot, Kotin, Angular and Docker. It'll be **WIP** for a while.
 
+## Requirements
+
+- docker
+- docker-compose
+- nodejs
+- angular-cli
+
 ## Run it
 
 1. Create the todo-list-ws docker image running `./gradlew docker`
