@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: 'http://tasklist-ws:8080'
+  api_url: 'http://localhost:8080'
 };
