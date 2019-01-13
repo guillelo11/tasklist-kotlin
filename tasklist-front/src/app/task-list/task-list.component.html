@@ -1,0 +1,24 @@
+<form class="input-group mb-3" (ngSubmit)="submit()" [formGroup] = "form">
+    <input formControlName="description" type="text" class="form-control" placeholder="Task description" aria-label="Task description" aria-describedby="button-save">
+    <div class="input-group-append">
+      <input [disabled]="!form.valid" class="btn btn-outline-secondary" type="submit" id="button-save" value="Add"/>
+    </div>
+</form>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td *ngIf="task.done"><del>{{task.description}}</del></td>
+      <td *ngIf="!task.done">{{task.description}}</td>
+      <td><input type="checkbox" [checked]="task.done" (change)="updateStatus(task)"></td>
+      <td><button class="btn btn-primary" (click)="delete(task.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+    </tr>
+  </tbody>
+</table>
