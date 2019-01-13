@@ -21,7 +21,7 @@ class TaskService(val taskRepository: TaskRepository) {
 
     fun updateTask(id: Long, task: Task): Task {
         val t = taskRepository.findById(id).get()
-        var updatedTask = t.copy(description = task.description)
+        var updatedTask = t.copy(description = task.description, done = task.done)
         return taskRepository.save(updatedTask)
     }
 
