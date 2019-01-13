@@ -18,7 +18,7 @@
       <td *ngIf="task.done"><del>{{task.description}}</del></td>
       <td *ngIf="!task.done">{{task.description}}</td>
       <td><input type="checkbox" [checked]="task.done" (change)="updateStatus(task)"></td>
-      <td><button class="btn btn-primary" (click)="delete(task.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></td>
+      <td><button class="btn btn-primary" (click)="delete(task.id)"><i class="far fa-trash-alt"></i></button></td>
     </tr>
   </tbody>
 </table>
