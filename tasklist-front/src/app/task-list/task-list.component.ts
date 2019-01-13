@@ -43,7 +43,7 @@ export class TaskListComponent implements OnInit {
   }
 
   submit() {
-    const task: Task = {id: 1, description: this.form.controls.description.value, done: false};
+    const task: Task = {id: null, description: this.form.controls.description.value, done: false};
     this.apiService.saveTask(task).subscribe((t) => {
       this.tasks.push(t);
       this.form.reset();

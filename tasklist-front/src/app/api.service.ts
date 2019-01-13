@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   public getTask(id: String): Observable<Task> {
-    return this.httpClient.get<Task>(API_URL + 'api/task/' + id);
+    return this.httpClient.get<Task>(API_URL + '/api/task/' + id);
   }
 
   public saveTask(task: Task): Observable<Task> {
@@ -26,10 +26,10 @@ export class ApiService {
   }
 
   public deleteTask(id: String) {
-    return this.httpClient.delete(API_URL + 'api/task/' + id);
+    return this.httpClient.delete(API_URL + '/api/task/' + id);
   }
 
   public updateTask(task: Task): Observable<Task> {
-    return this.httpClient.put<Task>(API_URL + 'api/task/' + task.id, task);
+    return this.httpClient.put<Task>(API_URL + '/api/task/' + task.id, task);
   }
 }
