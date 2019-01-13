@@ -10,4 +10,5 @@ import javax.validation.constraints.NotBlank
 data class Task (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY) val id: Long,
-        @get:NotBlank val description: String)
+        @get:NotBlank val description: String,
+        val done: Boolean = false)
