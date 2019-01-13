@@ -16,3 +16,10 @@ services:
      ports:
       - "8080:8080"
      restart: always
+   angular-front:
+     depends_on:
+      - tasklist-ws
+     image: task-angular-front:latest
+     ports:
+      - "80:80"
+     restart: always
